@@ -2,7 +2,7 @@
 
 ## Setup
 
-1. Clone the repository and download the data [here]().
+1. Clone the repository and download the data and models [here](https://drive.google.com/open?id=1fwDX13PFy3gWuR-quDWnH8b95uvVMlcO).
 
 2. Create a python virtual environment to use the correct dependencies
 
