@@ -19,7 +19,7 @@ class MovieRecommender:
             recs.append( self.movies[idx][7] )
         return recs
 
-    def get_recommendations_for_movie(self, m):
-        movie2idx = { tup[7] : i for i, tup in enumerate(self.movies) }
-        target_vector = self.feature_vectors[movie2idx[m]]
+    def get_recommendations_for_movie(self, mid):
+        movieid2idx = { tup[4] : i for i, tup in enumerate(self.movies) }
+        target_vector = self.feature_vectors[movieid2idx[mid]]
         return self.get_recommendations(target_vector)

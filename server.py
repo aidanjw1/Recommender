@@ -8,7 +8,7 @@ def recommendations(_id):
     with open('./recommender.model', 'rb') as f:
         rec = pickle.load(f)
 
-    recs = rec.get_recommendations_for_movie(19995)
+    recs = rec.get_recommendations_for_movie(int(_id))
     print(recs)
     return jsonify(recs)
 
