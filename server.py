@@ -1,6 +1,6 @@
 from flask import Flask, jsonify
 import pickle
-from recommender import MovieRecommender, id2movie
+from recommender import id2movie
 
 app = Flask(__name__)
 
