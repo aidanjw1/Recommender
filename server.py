@@ -1,6 +1,5 @@
 from flask import Flask, jsonify
 import pickle
-from recommender import id2movie
 
 app = Flask(__name__)
 
@@ -9,7 +8,7 @@ def recommendations(_id):
     with open('./recommender.model', 'rb') as f:
         rec = pickle.load(f)
 
-    recs = rec.get_recommendations_for_movie(id2movie[int(_id)])
+    recs = rec.get_recommendations_for_movie(19995)
     print(recs)
     return jsonify(recs)
 
