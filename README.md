@@ -19,3 +19,54 @@
 To evaluate the model, run `python3 evaluate_recommender.py` which will
 output an accuracy score explained in the code. 
 
+
+------
+
+------
+
+# REST API Docs
+
+Recommendation endpoints will return JSON data in the following format
+
+```
+{
+    movies: [ 
+        {
+            id: <id>,
+            title: <title>
+        }, ... 
+    ],
+    recommendations: [
+        {
+            id: <id>,
+            title: <title>
+        }, ...
+    ]
+}
+```
+
+where `movies` is the list of movies input into the model, and `recommendations`
+is the output of the model as a list of recommended movies based on the input.
+
+## Endpoints
+
+* To get a list of recommendations for a single movie as input
+
+    `GET  /recommendations/<id>`
+
+* To get a list of recommendations for multiple movies as input
+
+    `GET  /recommendations?id=<id 1>&id=<id 2>&...`
+
+    or
+
+    `POST  /recommendations`
+    
+    with request body: 
+
+    ```
+    {
+        ids: [id 1, id2, ...]
+    }
+    ```
+
