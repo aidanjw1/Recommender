@@ -34,6 +34,7 @@ def recommendations_many():
             return jsonify({ 'error': 'no (or empty) list of movie ids specified in POST body' }), 400 # Respond with bad request status
     else:
         body = flask.request.json
+        print(body)
         if 'ids' in body and len(body['ids']) is not 0:
             ids = body['ids']
         else:
