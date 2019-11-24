@@ -47,18 +47,19 @@ def recommendations_many():
             return jsonify({ 'error': 'no (or empty) list of movie ids specified in POST body' }), 400 # Respond with bad request status
 
     all_recs = []
+    num_recs_each = int(10 / len(ids))
     for _id in ids:
         result = db.engine.execute(f'SELECT closest10 FROM similarities WHERE movie_id = {_id};').fetchone()
-        all_recs += result[0]
+        all_recs += result[0][:num_recs_each]
     
     # Sort the recommended ids by the number of times they've appeard using a defaultdict to count their occurances
-    shuffle(all_recs)
+    # shuffle(all_recs)
     counts = defaultdict(int)
     for movie in all_recs:
         counts[movie] += 1
 
     recs = sorted(counts.keys(), key=lambda m: counts[m])[:10]
-
+    shuffle(recs)
     return jsonify(recs)
 
 
