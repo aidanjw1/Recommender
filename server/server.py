@@ -2,10 +2,7 @@ import flask
 from flask import Flask, jsonify, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
-from sklearn.metrics.pairwise import cosine_similarity
-import numpy as np
 from collections import defaultdict
-from functools import reduce
 from random import shuffle
 
 TMDB_API_KEY = '7cc441d4c80dc500e03786e94fd81402'
@@ -14,9 +11,6 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres@db:5432/pickflix'
 db = SQLAlchemy(app)
 CORS(app)
-
-def load_string_vector(s):
-    return np.fromstring(s, sep=' ').reshape(1, -1)
 
 @app.route('/')
 def index():
