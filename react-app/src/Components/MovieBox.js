@@ -6,11 +6,11 @@ import { TMDB_KEY } from "../config";
 
 const MovieBox = ({ movie, remove }) => {
 
-    const [ src, setSrc ] = useState('')
+    const [ src, setSrc ] = useState('');
 
     useEffect(() => {
         async function fetchPoster() {
-            const res = await fetch(`https://api.themoviedb.org/3/movie/${movie.id}?api_key=${TMDB_KEY}&language=en-US`);
+            const res = await fetch(`https://api.themoviedb.org/3/movie/${movie}?api_key=${TMDB_KEY}&language=en-US`);
             const body = await res.json();
             setSrc(body['poster_path']);
         }
@@ -20,7 +20,7 @@ const MovieBox = ({ movie, remove }) => {
     return (
         
             <Card style={{display: 'flex', width: '100%'}}>
-                <Link to={`/movie/${movie.id}`}>
+                <Link to={`/movie/${movie}`}>
                     <img src={`https://image.tmdb.org/t/p/original/${src}`}
                         height={130} width={100} />
                 </Link>

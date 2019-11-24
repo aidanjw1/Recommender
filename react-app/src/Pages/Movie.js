@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Paper } from "@material-ui/core";
-import { TMDB_KEY } from "../config";
+import config, { TMDB_KEY } from "../config";
 import MovieBox from "../Components/MovieBox";
 
 const Movie = ({ match }) => {
@@ -13,21 +13,23 @@ const Movie = ({ match }) => {
   
     useEffect(() => {
         
-        async function fetchMovie() {
-            const res = await fetch(`/recommendations/${id}`)
-            const json = await res.json();
-            setMovie(json['movie'])
-            setRecs(json['recommendations']);
+        async function fetchRecs() {
+            const res = await fetch(`${config.API_URL}/recommendations/${id}`);
+            const recs = await res.json();
+            console.log(recs);
+            setRecs(recs);
         }
-        fetchMovie();
+        fetchRecs();
 
         async function fetchPoster() {
             const res = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${TMDB_KEY}&language=en-US`);
             const json = await res.json();
+            console.log()
             const poster = json['poster_path'];
             setPoster(poster);
-            }
-            fetchPoster();
+            setMovie(json);
+          }
+          fetchPoster();
 
     }, [])
   
@@ -42,7 +44,7 @@ const Movie = ({ match }) => {
         }}>
         <Container maxWidth='md'>
           <Paper style={{padding: '1rem'}}>
-            <h1>Top Recommendations For: {movie['title']}</h1>
+            <h1>Top Recommendations For: {movie['original_title']}</h1>
             <div style={{overflow: 'scroll', height: '50vh'}}>
             {
               recs.map((rec, i) => (
