@@ -1,7 +1,12 @@
 __pycache__
 *.pyc
-.env
-.vscode
+*.csv
+*.npy
+.vscode/
+
+server/.env
+server/pgdata
+
 data/
 models/
 */.ipynb_checkpoints
