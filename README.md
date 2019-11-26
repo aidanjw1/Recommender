@@ -2,6 +2,8 @@
 
 ## API Docs
 
+URL: [](https://pickflix-api.aidanjwhite.com)
+
 * ```/recommendations```
 
     Takes a list of TMDB movie ids either as GET url query params or POST body json
