@@ -2,7 +2,7 @@
 
 ## API Docs
 
-URL: [](https://pickflix-api.aidanjwhite.com)
+URL: [https://pickflix-api.aidanjwhite.com](https://pickflix-api.aidanjwhite.com)
 
 * ```/recommendations```
 
