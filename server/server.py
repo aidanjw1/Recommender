@@ -8,7 +8,7 @@ from random import shuffle
 TMDB_API_KEY = '7cc441d4c80dc500e03786e94fd81402'
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres@db:5432/pickflix'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@db:5432/pickflix'
 db = SQLAlchemy(app)
 CORS(app)
 
