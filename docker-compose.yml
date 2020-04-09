@@ -7,13 +7,18 @@ services:
       - db
     ports: 
       - '5000:5000'
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - TMDB_API_KEY
     volumes:
       - ./server:/app
   db:
     image: postgres:latest
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_DB: pickflix
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB=pickflix
     volumes:
       - ./server/pgdata:/var/lib/postgresql/data
       - ./server/db:/data

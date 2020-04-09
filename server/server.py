@@ -4,11 +4,12 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from collections import defaultdict
 from random import shuffle
+import os
 
-TMDB_API_KEY = '7cc441d4c80dc500e03786e94fd81402'
+TMDB_API_KEY = os.environ['TMDB_API_KEY']
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@db:5432/pickflix'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://{}:{}@db:5432/pickflix'.format(os.environ['POSTGRES_USER'], os.environ['POSTGRES_PASSWORD'])
 db = SQLAlchemy(app)
 CORS(app)
 

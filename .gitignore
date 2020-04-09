@@ -10,3 +10,4 @@ server/pgdata
 data/
 models/
 */.ipynb_checkpoints
+.env
